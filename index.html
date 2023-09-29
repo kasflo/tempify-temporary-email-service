@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+    <title>TEMPIFY - Anonymer Tempmail-Service</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel = "icon" type = "image/jpg" href = "/img/TF.jpg">
+</head>
+<body>
+    <header class="header">
+      <a href="index.html" class="title">TEMPIFY</a>
+
+        <nav class="navbar">
+          <a href="index.html">Startseite</a>
+          <a href="hilfe.html">Hilfe</a>
+          <a href="kontakt.html">Kontakt</a>
+        </nav>
+    </header>
+
+
+    <div class="container">
+        <form id="emailForm">
+
+           
+            <div class="input-group">
+                <label for="email">EINGABE DER EMAIL</label>
+                <input type="text" id="email" name="email" placeholder="Email Adresse">
+            </div>
+            <div class="input-group">
+                <label for="domain">DOMAIN</label>
+                <select id="domain" name="domain">
+                    <option value="@cevipsa.com">@cevipsa.com</option>
+                    <option value="@cpav3.com">@cpav3.com</option>
+                    <option value="@nuclene.com">@nuclene.com</option>
+                    <option value="@steveix.com">@steveix.com</option>
+                    <option value="@mocvn.com">@mocvn.com</option>
+                    <option value="@tenvil.com">@tenvil.com</option>
+                    <option value="@tgvis.com">@tgvis.com</option>
+                    <option value="@amozix.com">@amozix.com</option>
+                    <option value="@anypsd.com">@anypsd.com</option>
+                    <option value="@maxric.com">@maxric.com</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <input type="submit" value="GENERIERE EMAIL" class="button">
+            </div>
+        </form>
+        <div class="response">
+            <h3>GENERIERTE EMAIL:</h3>
+            <div id="emailResponse"></div>
+            <h3>POSTFACH:</h3>
+            <div id="alert" class="alert" style="display: none;">Noch keine Emails erhalten.</div>
+            <div id="apiResponse"></div>
+        </div>
+        <div class="abrufen-Button">
+            <input type="submit" value="EMAILS ABRUFEN" class="button" id="abrufenEmails">
+        </div>
+    </div>
+
+    <script>
+        function generateEmail(event) {
+            event.preventDefault();
+            var email = document.getElementById("email").value;
+            var domain = document.getElementById("domain").value;
+            var emailHash = CryptoJS.MD5(email + domain);
+            var generatedEmail = email + domain;
+
+            document.getElementById("emailResponse").innerHTML = generatedEmail;
+            var url = "https://privatix-temp-mail-v1.p.rapidapi.com/request/mail/id/" + emailHash;
+            var apiVerbindung = {
+                "X-RapidAPI-Key": "3c3b29392cmsh4fbe5500270f1f5p121d2cjsn2d2e42321f74",
+                "X-RapidAPI-Host": "privatix-temp-mail-v1.p.rapidapi.com"
+            };
+
+            fetch(url, { headers: apiVerbindung })
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (data) {
+                    console.log(data);
+                    if (data.error) {
+                        document.getElementById("alert").style = 'display: block;';
+                        document.getElementById("apiResponse").innerHTML = '';
+                    } else {
+                        document.getElementById("alert").style = 'display: none;';
+                    }
+
+                    let menu = document.createElement('ul');
+                    data.forEach(obj => {
+                        let mail_id = obj.mail_id;
+                        let subject = obj.mail_subject;
+                        let from = obj.mail_from;
+
+                        let liItem = document.createElement('li');
+                        liItem.innerHTML = '<a href="posteingang.html?mail_id=' + mail_id + '" target="_blank">' + subject + ' | ' + from + '</a>';
+                        menu.append(liItem);
+                    });
+                    document.getElementById("apiResponse").innerHTML = '';
+                    document.getElementById("apiResponse").append(menu);
+                })
+        }
+
+        function emailKopieren() {
+        var generatedEmail = document.getElementById("emailResponse").innerHTML;
+        navigator.clipboard.writeText(generatedEmail)
+
+        .then(function () {
+            console.log('E-Mail-Adresse in die Zwischenablage kopiert: ' + generatedEmail);
+        })
+        }
+
+        document.getElementById("emailForm").addEventListener("submit", generateEmail);
+        document.getElementById("abrufenEmails").addEventListener("click", generateEmail);
+        document.getElementById("emailResponse").addEventListener("click", emailKopieren);
+    </script>
+</body>
+</html>

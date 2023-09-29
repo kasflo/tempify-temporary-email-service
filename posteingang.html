@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;600&display=swap" rel="stylesheet">
+    <title>TEMPIFY - Posteingang</title>
+    <link rel = "icon" type = "image/jpg" href = "/img/TF4.jpg">
+   
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="title">TEMPIFY</a>
+
+        <nav class="navbar">
+            <a href="index.html">Startseite</a>
+            <a href="hilfe.html">Hilfe</a>
+            <a href="kontakt.html">Kontakt</a>
+        </nav>
+    </header>
+
+    <div class="post-container">
+
+              <div class="posteingangtitle">
+                <h2>POSTEINGANG</h2>
+              </div>
+
+        <div class="post-absender">
+            <ul>
+            <li id="absender">Absender:</li>
+            <li id="betreff">Betreff:</li>
+            </ul>
+        </div> 
+            <div class="post-nachricht">
+            <h5>Nachricht:</h5> 
+            </div>          
+            <div class="nachricht" id="nachricht">
+            </div>
+    </div>
+    <script>
+        if (window.location.search.includes('mail_id')) {
+            const urlParams = new URLSearchParams(window.location.search);
+            const mail_id = urlParams.get('mail_id');
+
+            var url = "https://privatix-temp-mail-v1.p.rapidapi.com/request/one_mail/id/" + mail_id + '/';
+            var apiVerbindung = {
+                "X-RapidAPI-Key": "3c3b29392cmsh4fbe5500270f1f5p121d2cjsn2d2e42321f74",
+                "X-RapidAPI-Host": "privatix-temp-mail-v1.p.rapidapi.com"
+            };
+
+            fetch(url, { headers: apiVerbindung })
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(data) {
+                    document.getElementById('absender').innerHTML = 'Absender: ' + data.mail_from;
+                    document.getElementById('betreff').innerHTML = 'Betreff: ' + data.mail_subject;
+                    document.getElementById('nachricht').innerHTML = data.mail_html;
+                })
+        } 
+    </script>
+</body>
+</html>

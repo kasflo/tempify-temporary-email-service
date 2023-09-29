@@ -1,0 +1,340 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Source+Sans+3:wght@600&display=swap');
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Source Sans Pro', sans-serif;
+    text-decoration: none;
+    color: white;
+}
+
+body {
+    background: url(./img/bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.container {
+    background: rgba(27,31,34,0.80);
+    width: 640px;
+    margin: 50px auto;
+    max-width: 97%;
+    border-radius: 15px;
+    padding-bottom:1px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    font-size: 17px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 80%;
+    margin-bottom: 10px;
+}
+
+.alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    margin-bottom: -15px;
+    margin-top: 10px
+}
+
+.input-group input,
+.input-group select {
+    
+        width: 100%;
+        padding: 10px;
+        border-radius: 4px;
+        border: 1px solid lightgray;
+        background-color: #333; 
+        color: white; 
+     }
+      
+      
+.button {
+    background-color: transparent;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: auto;
+    letter-spacing: 1px;
+    font-size: 12px;
+    
+}
+
+.abrufen-Button {
+    width: auto;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid lightgray;
+    background-color: #333; 
+    color: white; 
+    cursor: pointer;
+    text-align: center;
+    margin: 40px;
+    margin-top: -10px;
+}
+
+.response {
+    padding: 30px 30px;
+    margin-left: 14px;
+    margin-right: 14px;
+    margin-top: -60px;
+    margin-bottom: 10px;
+}
+
+
+#emailResponse{
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#apiResponse{
+    margin-top: 10px;
+    
+}
+
+#apiResponse a:link {
+    color: lightblue;
+}
+
+.kontakt-container{
+    background: rgba(27,31,34,0.80);
+    width: 670px;
+    margin: 75px auto;
+    margin-top: 10px;
+    max-width: 97%;
+    border-radius: 15px;
+    
+}
+
+form{
+    background: transparent(27,31,34,0.80);
+    width: 640px;
+    margin: 50px auto;
+    max-width: 97%;
+    border-radius: 15px;
+    padding: 20px 30px;
+}
+
+form .ktitle h2{
+    letter-spacing: 6px;
+    border-bottom: 1px solid white;
+    display: inline-block;
+    padding-bottom: 8px;
+    margin-bottom: 32px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+
+form .half{
+    display: flex;
+    justify-content: space-between;
+}
+
+form .half .item{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+    width: 48%;
+}
+
+form label{
+    display: block;
+    font-size: 13px;
+    letter-spacing: 3.5px;
+    margin-bottom: 16px;
+    font-weight: bold;
+}
+
+form .half .item input{
+    border-radius: 4px;
+    border: 1px solid white;
+    outline: 0;
+    padding: 16px;
+    width: 100%;
+    height: 44px;
+    background: transparent;
+    font-size: 17px;
+    background-color: #333;
+}
+
+form .full{
+    margin-bottom: 24px;
+}
+
+form .full textarea{
+    background: transparent;
+    border-radius: 4px;
+    border: 1px solid white;
+    outline: 0;
+    padding: 12px 16px;
+    width: 100%;
+    height: 200px;
+    font-size: 17px;
+    background-color: #333;
+}
+
+form .action{
+    margin-bottom: 32px;
+}
+
+form .action input{
+    background: transparent;
+    border-radius: 4px;;
+    border: 1px solid white;
+    cursor: pointer;
+    height: 44px;
+    letter-spacing: 1px;
+    font-size: 12px;
+    outline: 0;
+    padding: 0 20px 0 22px;
+    margin-right: 10px;
+}
+
+form .action input[type="submit"]{
+    background: #333;
+    color: white;
+}
+
+.header {
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+} 
+
+.navbar a {
+    font-size: 18px;
+    color: white;
+    font-weight: 500;
+    text-decoration: none;
+    margin-left: 40px;
+}
+
+.navbar a:hover {
+    transition: 3ms;
+    color: #f44336;
+}
+.title {
+    letter-spacing: 6px;
+    border-bottom: 1px solid white;
+    display: inline-block;
+    font-size: 35px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+
+.title:hover {
+    transition: 3ms;
+    color:#f44336 ;
+}
+
+.post-container {
+    background: rgba(27,31,34,0.80);
+    width: 670px;
+    margin: 75px auto;
+    max-width: 97%;
+    border-radius: 15px;
+
+}
+
+.post-nachricht{
+    margin-left: 50px;
+    margin-top: 25px;
+    font-weight: bold;
+    font-size: 125%;
+}
+.post-absender{
+    
+    padding-top: 25px;
+    padding-left: 50px;
+    font-weight: bold;
+}
+.nachricht{
+    padding-left: 50px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-right: 50px;
+}
+
+
+.posteingangtitle{
+    letter-spacing: 6px;
+    border-bottom: 1px solid white;
+    display: inline-block;
+    padding-bottom: 8px;
+    margin-bottom: 5px;
+    margin: 15px;
+    margin-left: 50px
+}
+
+.hilfe-container{
+    background: rgba(27,31,34,0.80);
+    width: 1500px;
+    margin: 150px auto;
+    max-width: 97%;
+    border-radius: 15px;
+    margin-top: 50px;
+}
+
+.hilfetitle{
+    letter-spacing: 6px;
+    border-bottom: 1px solid white;
+    display: inline-block;
+    padding-bottom: 8px;
+    margin-bottom: 5px;
+    margin: 15px;
+    margin-left: 50px;
+    padding: 10px;
+
+
+}
+
+.hilfe-titel{
+    font-size: 20px;
+    padding: 10px;
+    letter-spacing: 2px;
+    margin-left: 25px;
+}
+
+.hilfe-text1{
+    color:  lightgrey;
+    padding: 10px;
+    margin-left: 50px;
+}
+
+.hilfe-textliste{
+    padding: 30px;
+    padding-top: 10px;
+    margin-left: 50px;
+}
+
+.ul, li{
+    color: lightgrey;
+}
+
+@media only screen and (max-width: 600px) {
+    .navbar {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 20px;
+        margin-top: 10px;
+    }
+    .navbar a {
+        margin: 10px 0;
+    }
+}
